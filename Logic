@@ -1,15 +1,19 @@
-#Democode
-for (var i = 1; i <= str1.length; i++) {
-    for (var j = 1; j <= str2.length; j++) {
-      var cost = str1.charAt(i - 1) === str2.charAt(j - 1) ? 0 : 1;
-      matrix[i][j] = Math.min(
-        matrix[i - 1][j] + 1,
+// Democode
+for (let i = 1; i <= str1.length; i++) {
+  for (let j = 1; j <= str2.length; j++) {
+    const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
+    matrix[i][j] = Math.min(matrix[i - 1][j] + 1, matrix[i][j - 1] + 1, matrix[i - 1][j - 1] + cost);
+  }
+}
+
 // Function to extract URLs from search results content using regular expressions
 function extractUrlsFromContent(content) {
-  var urlRegex = /<a href="(https?:\/\/[^\s"]+)"/g;
-  var searchResults = [];
-  var match;
- 
+  const urlRegex = /<a href="(https?:\/\/[^\s"]+)"/g;
+  const searchResults = [];
+  let match;
+  
   while ((match = urlRegex.exec(content)) !== null) {
     searchResults.push(match[1]);
   }
+  return searchResults;
+}
